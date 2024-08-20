@@ -9,7 +9,7 @@ defmodule PermissionsTest2 do
     }
   end
 
-  @tag permissions: :anonymous_viewer
+  @tag permissions: :anonymous
   test "anonymous viewers have the right permissions",
        %{viewer: anonymous_viewer, author: author} do
     {:ok, published_post} = Posts.create(author, %{published: true})

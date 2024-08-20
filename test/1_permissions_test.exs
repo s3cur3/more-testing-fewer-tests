@@ -9,26 +9,26 @@ defmodule PermissionsTest1 do
     }
   end
 
-  @tag permissions: :anonymous_viewer
+  @tag permissions: :anonymous
   test "anonymous viewers can view a published post",
        %{viewer: anonymous_viewer, author: author} do
     {:ok, post} = Posts.create(author, %{published: true})
     assert Permissions.can_view?(anonymous_viewer, post)
   end
 
-  @tag permissions: :anonymous_viewer
+  @tag permissions: :anonymous
   test "anonymous viewers cannot view a draft post",
        %{viewer: anonymous_viewer, author: author} do
     {:ok, post} = Posts.create(%{published: false}, author)
     refute Permissions.can_view?(anonymous_viewer, post)
   end
 
-  @tag permissions: :anonymous_viewer
+  @tag permissions: :anonymous
   test "anonymous viewers cannot create a post", %{viewer: anonymous_viewer} do
     refute Permissions.can_create_post?(anonymous_viewer)
   end
 
-  @tag permissions: :anonymous_viewer
+  @tag permissions: :anonymous
   test "anonymous viewers cannot edit a post",
        %{viewer: anonymous_viewer, author: author} do
     {:ok, post} = Posts.create(author, %{published: true})

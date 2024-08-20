@@ -3,7 +3,7 @@ defmodule PermissionsTest4 do
   use ExUnit.Case, async: true
 
   test "user permissions match their role" do
-    anonymous = ViewerFixtures.viewer(permissions: :anonymous_viewer)
+    anonymous = ViewerFixtures.viewer(permissions: :anonymous)
     viewer = ViewerFixtures.viewer(permissions: :viewer)
     author = ViewerFixtures.viewer(permissions: :author)
     editor = ViewerFixtures.viewer(permissions: :editor)

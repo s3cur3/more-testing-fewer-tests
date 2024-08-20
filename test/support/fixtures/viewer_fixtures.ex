@@ -1,10 +1,10 @@
 defmodule ViewerFixtures do
   def viewer(opts \\ []) do
-    permissions = Access.get(opts, :permissions, :anonymous_viewer)
+    permissions = Access.get(opts, :permissions, :anonymous)
 
     %{
       user:
-        if permissions != :anonymous_viewer do
+        if permissions != :anonymous do
           UserFixtures.user(opts)
         end,
       permissions: permissions
