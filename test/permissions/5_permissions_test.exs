@@ -21,11 +21,11 @@ defmodule PermissionsTest5 do
   #   %{permissions: :anonymous, published?: true,  post_creator?: false},
   #   %{permissions: :anonymous, published?: false, post_creator?: true},
   #   %{permissions: :anonymous, published?: false, post_creator?: false},
-  #   %{permissions: :viewer,           published?: true,  post_creator?: true},
-  #   %{permissions: :viewer,           published?: true,  post_creator?: true},
-  #   %{permissions: :viewer,           published?: true,  post_creator?: false},
-  #   %{permissions: :viewer,           published?: false, post_creator?: true},
-  #   %{permissions: :viewer,           published?: false, post_creator?: false},
+  #   %{permissions: :viewer,    published?: true,  post_creator?: true},
+  #   %{permissions: :viewer,    published?: true,  post_creator?: true},
+  #   %{permissions: :viewer,    published?: true,  post_creator?: false},
+  #   %{permissions: :viewer,    published?: false, post_creator?: true},
+  #   %{permissions: :viewer,    published?: false, post_creator?: false},
   #   ...
   # ]
 
