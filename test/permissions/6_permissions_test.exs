@@ -44,9 +44,6 @@ defmodule PermissionsTest6 do
              | :editor      | false      | true          | true      | true      |
              """,
              %{
-               permissions: permissions,
-               published?: published?,
-               post_creator?: post_creator?,
                viewer: viewer,
                post: post,
                can_view?: can_view?,

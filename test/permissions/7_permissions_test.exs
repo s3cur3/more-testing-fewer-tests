@@ -44,9 +44,6 @@ defmodule PermissionsTest7 do
              | :editor      | false      | true          | true      | true      | "editors can edit their own drafts"          |
              """,
              %{
-               permissions: permissions,
-               published?: published?,
-               post_creator?: post_creator?,
                viewer: viewer,
                post: post,
                can_view?: can_view?,
