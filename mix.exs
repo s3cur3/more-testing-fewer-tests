@@ -41,6 +41,7 @@ defmodule Blog.MixProject do
       # Testing
       {:parameterized_test, ">= 0.0.0", only: :test},
       {:stream_data, ">= 0.0.0", only: :test},
+      {:assert_value, ">= 0.0.0", only: [:test, :dev]},
 
       # Code quality
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
