@@ -11,7 +11,7 @@ defmodule RelativeDatetimeTest3 do
           day: round(-365 / 12 * months) - days,
           hour: -hours,
           minute: -mins,
-          second: secs
+          second: -secs
         )
 
       now = DateTime.utc_now()
