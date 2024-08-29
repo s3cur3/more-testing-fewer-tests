@@ -2,7 +2,7 @@ defmodule Posts do
   def create(author, attrs) do
     post =
       %{
-        # Support passing in either a user or a viewer and pulling out its user
+        # Support passing in either a user or a visitor and pulling out its user
         author: Map.get(author, :user, author),
         published: Access.get(attrs, :published, false)
       }

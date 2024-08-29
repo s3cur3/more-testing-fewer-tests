@@ -4,26 +4,26 @@ defmodule PermissionsTest2 do
 
   setup %{permissions: _} = context do
     %{
-      viewer: ViewerFixtures.viewer(context),
+      visitor: VisitorFixtures.visitor(context),
       author: UserFixtures.user(permissions: :author)
     }
   end
 
   @tag permissions: :anonymous
-  test "anonymous viewers have the right permissions",
-       %{viewer: anonymous_viewer, author: author} do
+  test "anonymous visitors have the right permissions",
+       %{visitor: anonymous_visitor, author: author} do
     {:ok, published_post} = Posts.create(author, %{published: true})
     {:ok, draft_post} = Posts.create(author, %{published: false})
 
-    assert Permissions.can_view?(anonymous_viewer, published_post)
-    assert Permissions.can_view?(anonymous_viewer, draft_post)
-    refute Permissions.can_edit?(anonymous_viewer, published_post)
-    refute Permissions.can_edit?(anonymous_viewer, draft_post)
+    assert Permissions.can_view?(anonymous_visitor, published_post)
+    assert Permissions.can_view?(anonymous_visitor, draft_post)
+    refute Permissions.can_edit?(anonymous_visitor, published_post)
+    refute Permissions.can_edit?(anonymous_visitor, draft_post)
   end
 
   @tag permissions: :viewer
   test "logged in viewers have the right permissions",
-       %{viewer: viewer, author: author} do
+       %{visitor: viewer, author: author} do
     {:ok, published_post} = Posts.create(author, %{published: true})
     {:ok, draft_post} = Posts.create(author, %{published: false})
 
@@ -35,7 +35,7 @@ defmodule PermissionsTest2 do
 
   @tag permissions: :author
   test "authors have the right permissions",
-       %{viewer: author, author: other_author} do
+       %{visitor: author, author: other_author} do
     {:ok, others_published_post} = Posts.create(other_author, %{published: true})
     {:ok, others_draft_post} = Posts.create(other_author, %{published: false})
     {:ok, own_post} = Posts.create(author, %{published: false})
@@ -50,7 +50,7 @@ defmodule PermissionsTest2 do
 
   @tag permissions: :editor
   test "editors have the right permissions",
-       %{viewer: editor, author: author} do
+       %{visitor: editor, author: author} do
     {:ok, others_published_post} = Posts.create(author, %{published: true})
     {:ok, others_draft_post} = Posts.create(author, %{published: false})
     {:ok, own_post} = Posts.create(editor, %{published: false})

@@ -1,5 +1,5 @@
-defmodule ViewerFixtures do
-  def viewer(opts \\ []) do
+defmodule VisitorFixtures do
+  def visitor(opts \\ []) do
     permissions = Access.get(opts, :permissions, :anonymous)
 
     %{

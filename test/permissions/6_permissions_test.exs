@@ -9,17 +9,17 @@ defmodule PermissionsTest6 do
           published?: published?,
           post_creator?: post_creator?
         } = context do
-    viewer = ViewerFixtures.viewer(context)
+    visitor = VisitorFixtures.visitor(context)
 
     post_author =
       if permissions == :anonymous or not post_creator? do
         UserFixtures.user(permissions: :author)
       else
-        viewer
+        visitor
       end
 
     %{
-      viewer: viewer,
+      visitor: visitor,
       post: Posts.create!(post_author, %{published: published?})
     }
   end
@@ -44,12 +44,12 @@ defmodule PermissionsTest6 do
              | :editor      | false      | true          | true      | true      |
              """,
              %{
-               viewer: viewer,
+               visitor: visitor,
                post: post,
                can_view?: can_view?,
                can_edit?: can_edit?
              } do
-    assert Permissions.can_view?(viewer, post) == can_view?
-    assert Permissions.can_edit?(viewer, post) == can_edit?
+    assert Permissions.can_view?(visitor, post) == can_view?
+    assert Permissions.can_edit?(visitor, post) == can_edit?
   end
 end

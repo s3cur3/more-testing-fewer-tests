@@ -3,10 +3,10 @@ defmodule PermissionsTest4 do
   use ExUnit.Case, async: true
 
   test "user permissions match their role" do
-    anonymous = ViewerFixtures.viewer(permissions: :anonymous)
-    viewer = ViewerFixtures.viewer(permissions: :viewer)
-    author = ViewerFixtures.viewer(permissions: :author)
-    editor = ViewerFixtures.viewer(permissions: :editor)
+    anonymous = VisitorFixtures.visitor(permissions: :anonymous)
+    viewer = VisitorFixtures.visitor(permissions: :viewer)
+    author = VisitorFixtures.visitor(permissions: :author)
+    editor = VisitorFixtures.visitor(permissions: :editor)
 
     other_author = UserFixtures.user(permissions: :author)
     {:ok, published_post} = Posts.create(other_author, %{published: true})

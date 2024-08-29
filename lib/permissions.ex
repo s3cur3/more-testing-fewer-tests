@@ -1,17 +1,17 @@
 defmodule Permissions do
-  def can_view?(viewer, post) do
-    post.published or viewer.permissions in [:viewer, :author, :editor]
+  def can_view?(visitor, post) do
+    post.published or visitor.permissions in [:viewer, :author, :editor]
   end
 
-  def can_edit?(viewer, post) do
+  def can_edit?(visitor, post) do
     cond do
-      viewer.permissions == :author and post.author == viewer.user -> true
-      viewer.permissions == :editor -> true
+      visitor.permissions == :author and post.author == visitor.user -> true
+      visitor.permissions == :editor -> true
       true -> false
     end
   end
 
-  def can_create_post?(viewer) do
-    viewer.permissions in [:author, :editor]
+  def can_create_post?(visitor) do
+    visitor.permissions in [:author, :editor]
   end
 end
